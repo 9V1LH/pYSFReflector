@@ -737,6 +737,16 @@ def RunServer(config):
             
             ## Extended Commands ##
             if (en_ext_cmd == 1 and addr[0]=='127.0.0.1'):
+              if (cmd == b'QWPL'):
+                printlog(0, 'Received command ' + cmd.decode() + ' from: ' + addr[0] + ':' + str(addr[1]))
+                info = 'AWPL;'
+                if len(BLK_TMP) == 0:
+                    info += 'No users temporary blocked;'
+                else:
+                    for wcall in BLK_TMP:
+                        info += str(wcall) + ';'
+                s.sendto(str.encode(info),addr)    
+
               if (cmd == b'QSRU'):
                 printlog(0, 'Received command ' + cmd.decode() + ' from: ' + addr[0] + ':' + str(addr[1]))
                 info = 'ASRU;' + str(round(time.time()-time_start)) + ';'
