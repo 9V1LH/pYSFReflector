@@ -82,8 +82,14 @@ CS/Number of muted Callsigns|AL/Number of whitelisted Callsigns|GW/Number of mut
 
 ### QWPL - Query Temporary Blocked Users List (WildPTT)
 #### Reply
-`AWPL;No users temporary blocked;`
 `AWPL;9V1LH;`
 
 #### Description
-CS/Number of muted Callsigns|AL/Number of whitelisted Callsigns|GW/Number of muted Gateways|IP/Number of muted IP-Addresses;List of Entries from deny.db
+Callsign
+
+### QWPF - Remove all temporary blocked Users (WildPTT)
+#### Reply
+`AWPF;Temporary blocked users removed;`
+
+#### Description
+
