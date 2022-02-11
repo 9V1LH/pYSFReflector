@@ -412,7 +412,7 @@ def ReadConfig(f,p):
   config = configparser.ConfigParser()
   
   config_file = f.strip()
-  config.read(config_file)
+  config.read(config_file, encoding='latin-1')
   name = config['Info']['Name'] 
   description = config['Info']['Description']
   try:
