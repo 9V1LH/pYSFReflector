@@ -740,9 +740,7 @@ def RunServer(config):
               if (cmd == b'QWPL'):
                 printlog(0, 'Received command ' + cmd.decode() + ' from: ' + addr[0] + ':' + str(addr[1]))
                 info = 'AWPL;'
-                if len(BLK_TMP) == 0:
-                    info += 'No users temporary blocked;'
-                else:
+                if len(BLK_TMP) != 0:
                     for wcall in BLK_TMP:
                         info += str(wcall) + ';'
                 s.sendto(str.encode(info),addr)    
@@ -752,7 +750,7 @@ def RunServer(config):
                 for sc in SCHED:
                     BLK_TMP.remove(sc[0])
                     SCHED.remove(sc)
-                info = 'AWPF;Temporary blocked users removed'
+                info = 'AWPF;Temporary blocked users removed;'
                 s.sendto(str.encode(info),addr)
 
               if (cmd == b'QSRU'):
