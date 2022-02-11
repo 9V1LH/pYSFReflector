@@ -736,7 +736,7 @@ def RunServer(config):
               printlog(0, 'Received information from: ' + addr[0] + ': Callsign: ' + str(data[4:14].decode().strip()) + ' RX-QRG: ' + str(data[14:23].decode().strip()) + ' TX-QRG: ' + str(data[23:32].decode().strip()) + ' Loc: ' + str(data[32:38].decode().strip()) + ' QTH: ' + str(data[38:58].decode().strip()) + ' Type: ' + str(data[58:70].decode().strip()) + ' GW-ID: ' + str(data[70:87].decode().strip()))
             
             ## Extended Commands ##
-            if (en_ext_cmd == 1):
+            if (en_ext_cmd == 1 and addr[0]=='127.0.0.1'):
               if (cmd == b'QSRU'):
                 printlog(0, 'Received command ' + cmd.decode() + ' from: ' + addr[0] + ':' + str(addr[1]))
                 info = 'ASRU;' + str(round(time.time()-time_start)) + ';'
@@ -870,7 +870,7 @@ def hex_dump(data):
 
 ######## main ########
 
-version = '20220203'
+version = '20220211-9V1LH'
 
 if (len(sys.argv) != 2):
   print('Invalid Number of Arguments')
