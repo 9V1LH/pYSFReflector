@@ -747,6 +747,14 @@ def RunServer(config):
                         info += str(wcall) + ';'
                 s.sendto(str.encode(info),addr)    
 
+              if (cmd == b'QWPF'):
+                printlog(0, 'Received command ' + cmd.decode() + ' from: ' + addr[0] + ':' + str(addr[1]))
+                for sc in SCHED:
+                    BLK_TMP.remove(sc[0])
+                    SCHED.remove(sc)
+                info = 'AWPF;Temporary blocked users removed'
+                s.sendto(str.encode(info),addr)
+
               if (cmd == b'QSRU'):
                 printlog(0, 'Received command ' + cmd.decode() + ' from: ' + addr[0] + ':' + str(addr[1]))
                 info = 'ASRU;' + str(round(time.time()-time_start)) + ';'
